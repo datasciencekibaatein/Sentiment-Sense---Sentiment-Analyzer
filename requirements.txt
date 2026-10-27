@@ -1,9 +1,10 @@
+# SentimentSense - production dependencies
+# Python 3.12 recommended
 
-numpy
-pandas
-tensorflow
-scikit-learn
-matplotlib
-seaborn
-flask-cors
+# TensorFlow: smaller CPU build on Linux servers (Render), normal build on Mac/Windows
+tensorflow-cpu>=2.16; sys_platform == "linux"
+tensorflow>=2.16; sys_platform != "linux"
+
+numpy>=1.26
+flask>=3.0
 gunicorn>=22.0
