@@ -6,3 +6,4 @@ scikit-learn
 matplotlib
 seaborn
 flask-cors
+gunicorn>=22.0
