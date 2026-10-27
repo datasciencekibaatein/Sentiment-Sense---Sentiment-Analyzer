@@ -1,2 +1,16 @@
+
+
 -r requirements.txt
-ipykernel
+
+# Notebook work
+pandas>=2.1
+scikit-learn>=1.4
+matplotlib>=3.8
+seaborn>=0.13
+ipykernel>=6.29
+jupyterlab>=4.0
+
+# Testing and code quality
+pytest>=8.0
+black>=24.0
+ruff>=0.4
