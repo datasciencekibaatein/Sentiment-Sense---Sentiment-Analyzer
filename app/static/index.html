@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SentimentSense</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+
+    <header class="masthead">
+      <h1>SentimentSense</h1>
+      <p class="lede">Paste a review and see whether it reads positive or negative. Two models read it: a simple RNN and an LSTM, both trained on 25,000 IMDB reviews.</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Mode">
+      <button class="tab is-active" role="tab" id="tab-single" aria-selected="true" aria-controls="panel-single">One review</button>
+      <button class="tab" role="tab" id="tab-batch" aria-selected="false" aria-controls="panel-batch">Many reviews</button>
+    </div>
+
+    <!-- ONE REVIEW -->
+    <section class="panel" id="panel-single" role="tabpanel" aria-labelledby="tab-single">
+      <label class="field-label" for="reviewInput">Review text</label>
+      <textarea id="reviewInput" rows="6" maxlength="5000" placeholder="Type or paste a review here..."></textarea>
+
+      <div class="examples">
+        <span class="hint">Try an example:</span>
+        <button class="chip" data-example="positive">Positive</button>
+        <button class="chip" data-example="negative">Negative</button>
+        <button class="chip" data-example="tricky">Tricky</button>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label class="field-label" for="modelSelect">Model</label>
+          <select id="modelSelect">
+            <option value="both" selected>Compare both</option>
+            <option value="lstm">LSTM</option>
+            <option value="rnn">Simple RNN</option>
+          </select>
+        </div>
+        <button class="primary" id="analyzeBtn">Analyze review</button>
+      </div>
+
+      <p class="message" id="singleMessage" role="status" aria-live="polite"></p>
+      <div class="results" id="singleResults"></div>
+    </section>
+
+    <!-- MANY REVIEWS -->
+    <section class="panel" id="panel-batch" role="tabpanel" aria-labelledby="tab-batch" hidden>
+      <p class="help">Upload a <strong>.txt</strong> file with one review per line, or a <strong>.csv</strong> file with a column named <em>review</em> or <em>text</em>. Up to 2,000 reviews.</p>
+
+      <div class="controls">
+        <div class="control">
+          <label class="field-label" for="batchModel">Model</label>
+          <select id="batchModel">
+            <option value="lstm" selected>LSTM</option>
+            <option value="rnn">Simple RNN</option>
+          </select>
+        </div>
+        <div class="control grow">
+          <label class="field-label" for="fileInput">File</label>
+          <input type="file" id="fileInput" accept=".txt,.csv">
+        </div>
+        <button class="primary" id="batchBtn">Analyze file</button>
+      </div>
+
+      <p class="message" id="batchMessage" role="status" aria-live="polite"></p>
+
+      <div id="batchResults" hidden>
+        <h2>Summary</h2>
+        <div class="stack" id="stackBar" role="img" aria-label="Share of positive, uncertain and negative reviews"></div>
+        <dl class="counts" id="counts"></dl>
+
+        <div class="table-head">
+          <h2>First reviews</h2>
+          <button class="chip" id="downloadBtn">Download results (CSV)</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Review</th><th>Result</th><th>Confidence</th></tr></thead>
+            <tbody id="rowsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>Trained on movie reviews. Results on product reviews, sarcasm or other topics may be less reliable.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

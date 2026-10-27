@@ -1,0 +1,28 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# VS Code settings (optional)
+.vscode/
+
+# Secrets (if you ever add API keys)
+.env
+
+# Downloaded datasets and caches
+data/
+*.tar.gz
+
+# Logs
+*.log
