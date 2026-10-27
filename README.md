@@ -306,4 +306,6 @@ The response contains the selected model, one result per review, and a summary w
 
 ## License
 
-No license information was supplied with this project. Add a license file if you intend to distribute or reuse the project publicly.
+## License
+
+This project is licensed under the MIT License, which permits anyone to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the software, subject to the conditions of the license. The MIT License requires that the original copyright notice and permission notice be included in all copies or substantial portions of the software. See the LICENSE file for the complete license terms.
